@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_assets">
+
+    <fragment
+        android:id="@+id/nav_assets"
+        android:name="com.example.bitcoin.ui.assets.AssetsFragment"
+        android:label="Assets"
+        tools:layout="@layout/fragment_assets" >
+        <action
+            android:id="@+id/action_nav_assets_to_assetsDetails"
+            app:destination="@id/assetsDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_rates"
+        android:name="com.example.bitcoin.ui.rates.RatesFragment"
+        android:label="Rates"
+        tools:layout="@layout/fragment_rates" >
+        <action
+            android:id="@+id/action_nav_rates_to_ratesDetails"
+            app:destination="@id/ratesDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_exchanges"
+        android:name="com.example.bitcoin.ui.exchanges.ExchangesFragment"
+        android:label="Exchanges"
+        tools:layout="@layout/fragment_exchanges" >
+        <action
+            android:id="@+id/action_nav_exchanges_to_exchangesDetails"
+            app:destination="@id/exchangesDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_markets"
+        android:name="com.example.bitcoin.ui.markets.MarketsFragment"
+        android:label="Markets"
+        tools:layout="@layout/fragment_markets" >
+        <action
+            android:id="@+id/action_nav_markets_to_marketsDetails"
+            app:destination="@id/marketsDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/assetsDetails"
+        android:name="com.example.bitcoin.ui.assets.AssetsDetails"
+        android:label="fragment_assets_details"
+        tools:layout="@layout/fragment_assets_details" />
+    <fragment
+        android:id="@+id/ratesDetails"
+        android:name="com.example.bitcoin.ui.rates.RatesDetails"
+        android:label="fragment_rates_details"
+        tools:layout="@layout/fragment_rates_details" />
+    <fragment
+        android:id="@+id/exchangesDetails"
+        android:name="com.example.bitcoin.ui.exchanges.ExchangesDetails"
+        android:label="fragment_exchanges_details"
+        tools:layout="@layout/fragment_exchanges_details" />
+    <fragment
+        android:id="@+id/marketsDetails"
+        android:name="com.example.bitcoin.ui.markets.MarketsDetails"
+        android:label="fragment_markets_details"
+        tools:layout="@layout/fragment_markets_details" />
+</navigation>

@@ -1,0 +1,56 @@
+package com.example.bitcoin.ui.exchanges
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bitcoin.data.models.AssetsModel
+import com.example.bitcoin.data.models.ExchangesModel
+import com.example.bitcoin.databinding.FragmentExchangesBinding
+import com.example.bitcoin.ui.assets.AssetsAdapter
+
+class ExchangesFragment : Fragment() {
+
+    private var _binding: FragmentExchangesBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val exchangesViewModel =
+            ViewModelProvider(this).get(ExchangesViewModel::class.java)
+
+        _binding = FragmentExchangesBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+
+        exchangesViewModel.vmText.observe(viewLifecycleOwner) {
+           it?.let {
+               setupUI(it)
+           }
+        }
+
+        exchangesViewModel.getExchanges()
+        return root
+    }
+    private  fun setupUI(exchanges: ExchangesModel){
+        binding.rvExchanges.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = ExchangesAdapter(exchanges.data)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
